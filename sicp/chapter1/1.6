@@ -1,0 +1,12 @@
+(define (sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+          guess
+          (sqrt-iter) (improve guess x)
+                      x)))
+
+(define new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+если работать через new-if, то при истинности выражения в cond перед этим все равно вычислятся все предыдущие e. то есть программа выдаст и 
+guess и improve guess x). будет некорректный вывод
